@@ -24,7 +24,7 @@
     
 
 </head>
-
+{% block content%}
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -58,7 +58,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 name</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">hinal pujara</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{name}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -76,7 +76,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 SCHOOL</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">S.V.I.S</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{school}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-school fa-2x text-gray-300"></i>
@@ -96,7 +96,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">1911042</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{roll}}</div>
                                                 </div>
                                                 
                                             </div>
@@ -117,7 +117,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 STD</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">11th</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{standard}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -143,7 +143,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                        {{ graph|safe }}
                                     </div>
                                 </div>
                             </div>
@@ -162,9 +162,9 @@
                                 <div class="card-body">
                                     <div >
                                         <div class="row">
-                                          <div class="col p-4 listh"><b>Recommended Field:</b> </div>
+                                          <div class="col p-4 listh"><b>Recommended Field: {{field}}</b> </div>
                                           <div class="w-100"></div>
-                                          <div class="col p-4 listh"><b>Field Prefered by Student:</b> </div>
+                                          <div class="col p-4 listh"><b>Field Prefered by Student: {{interest}}</b> </div>
                                           
                                         </div>
                                       </div>
@@ -175,7 +175,7 @@
                 <div class="card-header"> <h5>Upload Student Database Here</h5></div>
                 <div class="card-body" >
                     <div class="text-center">
-                        <form method="POST" enctype="multipart/form-data" action="{% url 'upload-csv'  %}">
+                        <form method="POST" enctype="multipart/form-data" action="{% url '#'  %}">
                             {% csrf_token %}
   <div class="form-group">
 

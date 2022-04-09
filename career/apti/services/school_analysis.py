@@ -18,6 +18,7 @@ def graphs():
     graph1 = plotly.offline.plot(go_fig, auto_open=False, output_type="div")
     #   graph4 = plotly.offline.plot(fig, auto_open=False, output_type="div")
     context = {"graph": [graph1, graph2, graph3],
+
                'name': request.user.school,
                 'city': request.user.school.city,
                 'state': request.user.school.state,
