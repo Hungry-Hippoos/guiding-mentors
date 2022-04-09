@@ -1,5 +1,5 @@
 from django import forms
-from .models import Medicine,Sales,MedicineHistory
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 class CreateUserForm(UserCreationForm):

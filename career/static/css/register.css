@@ -5,7 +5,7 @@
 body {
     margin-top: -75px;
 	font-family: 'Poppins', sans-serif;
-	background: linear-gradient(rgba(0.5, 0, 0, 0.5), rgba(0.5, 0, 0, 0.5)),url("../images/bg2.png");
+	background: linear-gradient(rgba(0.5, 0, 0, 0.5), rgba(0.5, 0, 0, 0.5)),url("../images/hack_bg.jpeg");
 	height: 95vh;
 	-webkit-background-size: cover;
 	background-size: cover;
@@ -90,9 +90,9 @@ body {
 /*srinil*/
 
 .container{
-    align:centre;
-    right: 100px;
-    top: 250px;
+    
+    right: 50px;
+    top: 50px;
     width: 500px;
     height : 600px;
     background: #ffffff;
