@@ -9,7 +9,7 @@ class SchoolBuffer(Model):
     address = CharField(max_length=255,blank=False,null=False)
     username = CharField(max_length=255,blank=False, null=False)
     password = CharField(max_length=255,blank=False,null=False)
-    board_id = PositiveIntegerField(blank=False,null=False)
+    board = CharField(max_length=255,blank=False,null=False)
     status = PositiveIntegerField(default=1)
 
     def __str__(self):
