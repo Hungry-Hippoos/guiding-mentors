@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Forum{% endblock title %}
+
+{% block style %}
+{% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static '/css/forum.css' %}">
+{% endblock style %}
+
+{% block body %}
+
+
+<div class="list-group mx-5 my-5 px-5">
+    <div class="d-flex justify-content-between mb-3 mx-3">
+         <h2 class=''>All Questions</h2>
+         <form class="col-10 col-lg-auto mb-3 mb-lg-0 me-lg-3 mx-3" method='post' action='/search-forum/'>
+            {% csrf_token %}
+            <input
+              type="search"            
+              class="form-control"
+              placeholder="Search..."
+              aria-label="Search"
+              name='questionInitials'
+            />
+          </form>
+         <button class="btn btn-primary" onclick="window.location.href = '/new-question/';" type="button">Ask Question</button>
+    </div>
+   
+    {% for question in questions %}
+    <a href="{% url 'question' question.id %}" class="list-group-item list-group-item-action" aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ question.title }}</h5>
+            <small>{{question.created_at}}</small>            
+        </div>
+        <div class="d-flex justify-content-between">
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <span class="badge bg-primary rounded-pill">14</span>
+        </div>        
+        <small>by {{question.author.username}}</small>        
+    </a>
+    
+    {% endfor %} 
+</div>
+
+{% endblock body %}

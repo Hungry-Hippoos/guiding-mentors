@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}New Question{% endblock title %}
+
+{% block style %}
+{% load static %}
+ <link href= "{% static 'css/newQuestion.css'  %}" rel="stylesheet">
+{% endblock style %}
+
+{% block body %}
+<body>   
+    <main class="container">
+        <h1 class="title">New question</h1>
+        <form method="POST" action="" class="new-question-form">
+            {% csrf_token %}
+            <div class="mb-3">
+                
+            </div>
+            <div class="mb-3" >
+                <label for="{{form.title.id_for_label}}" class="form-label">Title:</label>
+                {{form.title}}
+                <span class="error">{{form.title.errors}}</span>
+            </div>
+            <div class="mb-3">
+                <label for="{{form.body.id_for_label}}">Body:</label>
+                {{form.body}}
+                <span class="error">{{form.body.errors}}</span>
+            </div>           
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </main> 
+</body>
+
+{% endblock body %}

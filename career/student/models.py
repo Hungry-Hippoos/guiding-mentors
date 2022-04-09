@@ -1,5 +1,35 @@
+
 from django.db.models import CharField, ForeignKey, PositiveIntegerField, DateTimeField, BooleanField, CASCADE, TextField, Model, AutoField
 # Create your models here.
+from django.db.models import CharField, ForeignKey, PositiveIntegerField, DateTimeField, BooleanField, CASCADE, TextField, Model
+
+from django.db import models
+from django.contrib.auth.models import User
+class Question(Model):
+    author = ForeignKey(User,null=False, on_delete=CASCADE)
+    title = CharField(max_length=200, null=False)
+    body =TextField(null=False)
+    created_at = DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+    
+    def get_responses(self):
+        return self.responses.filter(parent=None)
+
+class Response(Model):
+    user = ForeignKey(User,null=False, on_delete=CASCADE)
+    question = ForeignKey(Question,null=False, on_delete=CASCADE,related_name='responses')
+    parent = ForeignKey('self', null=True, blank=True, on_delete=CASCADE)
+    body = TextField(null=False)
+    created_at = DateTimeField(auto_now_add=True)
+    updated_at = DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.body
+
+    def get_responses(self):
+        return Response.objects.filter(parent=self)
 class StudentBuffer(Model):
     id = AutoField(blank=False, null=False, primary_key=True)
     created_on = DateTimeField(auto_now_add=True)
@@ -10,7 +40,7 @@ class StudentBuffer(Model):
     username = CharField(max_length=255,blank=False, null=False)
     password = CharField(max_length=255,blank=False,null=False)
     school_id = PositiveIntegerField(blank=False,null=False)
-    course_id = PositiveIntegerField(blank=False,null=False)
+    
     q1 = CharField(max_length=255,null=True)
     q2 = CharField(max_length=255,null=True)
     q3 = CharField(max_length=255,null=True)

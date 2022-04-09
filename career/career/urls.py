@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from student.views import loginPage,registerPage,homepage
+from student.views import loginPage,registerPage,homepage,quizPage,forum,searchForum,newQuestionPage,questionPage,replyPage,landingPage
 from django.contrib.auth import views as auth_views
 from school.views import upload_csv
 from apti.views import quizPage, student_dashboard
 
 urlpatterns = [
+    
     path('admin/', admin.site.urls), 
+    path('/',landingPage,name='landing'),
     path('register/',registerPage,name="register"),
     path('login/',loginPage,name="login"),
     path('reset_password/',auth_views.PasswordResetView.as_view(template_name="password_reset.html"),name="reset_password"),
@@ -34,4 +36,10 @@ urlpatterns = [
     path('quiz/',quizPage,name='quiz'),
     path('quiz/<int:student_id>',quizPage,name='quiz'),
     path('school/<int:school_id>/upload-csv',upload_csv,name='upload-csv'),
+    path('forum/',forum,name='forum'),
+    path('search-forum/',searchForum,name='search-forum'),
+    path('new-question/',newQuestionPage,name='new-question'),
+    path('question/<int:id>/',questionPage,name='question'),
+    path('reply/',replyPage,name='reply'),
+    
 ]

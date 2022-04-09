@@ -18,14 +18,18 @@
     <form method='POST' action=''>
         {% csrf_token %}
         <h3>REGISTER</h3>
-        {{ form.username.label }}
+        {{ form.name.label }}
+        {{form.name}}
+         {{ form.age.label }}
+        {{form.age}}
+         {{ form.standard.label}}
+        {{form.standard}}
+         {{ form.username.label }}
         {{form.username}}
-         {{ form.email.label }}
-        {{form.email}}
-         {{ form.password1.label}}
-        {{form.password1}}
-         {{ form.password2.label }}
-        {{form.password2}}
+        {{ form.password.label}}
+        {{form.password}}
+         {{ form.school_id.label }}
+        {{form.school_id}}
 
         <button type="submit">Create user</button>
         {{form.errors}}

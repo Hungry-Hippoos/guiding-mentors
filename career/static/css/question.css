@@ -1,0 +1,37 @@
+.reply-button {
+    background-color: transparent;
+    
+    border: none;
+    padding: 0;
+    text-transform: lowercase;
+    color:#5161CE;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .reply-form-container {
+    display: none;
+  }
+  
+  .reply-form-container.enabled {
+    display: block;
+  }
+  
+  .reply-form textarea {
+    width: 100%;
+  }
+  body{
+    background: linear-gradient(rgba(0.5, 0, 0, 0.5), rgba(0.5, 0, 0, 0.5)),url("../images/hack_bg.jpeg");
+    height:100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+  }
+  
+  blockquote {
+    border-left: 6px solid #dee2e6;
+    padding-left: 15px;
+  }
