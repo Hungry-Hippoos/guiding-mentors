@@ -19,6 +19,7 @@ from student.views import loginPage,registerPage,homepage,forum,searchForum,newQ
 from django.contrib.auth import views as auth_views
 from school.views import upload_csv
 from apti.views import quizPage, student_dashboard
+from school.views import schoolRegisterPage
 
 urlpatterns = [
     
@@ -41,5 +42,6 @@ urlpatterns = [
     path('new-question/',newQuestionPage,name='new-question'),
     path('question/<int:id>/',questionPage,name='question'),
     path('reply/',replyPage,name='reply'),
+    path('school/register/',schoolRegisterPage,name='school-register')
     
 ]
