@@ -1,7 +1,7 @@
-from django.db.models import CharField, ForeignKey, PositiveIntegerField, DateTimeField, BooleanField, CASCADE, TextField, Model
+from django.db.models import CharField, ForeignKey, PositiveIntegerField, DateTimeField, BooleanField, CASCADE, TextField, Model, AutoField
 # Create your models here.
 class SchoolBuffer(Model):
-    id = PositiveIntegerField(blank=False, null=False, primary_key=True)
+    id = AutoField(blank=False, null=False, primary_key=True)
     created_on = DateTimeField(auto_now_add=True)
     updated_on = DateTimeField(auto_now=True)
     name = CharField(max_length=255,blank=False,null=False)
