@@ -13,8 +13,9 @@ def student_dashboard(request,responses):
     student.recommended=generate_field(responses)
 
 @csrf_exempt
-def quizPage(request):
+def quizPage(request,student_id=None):
     if request.method == 'POST':
         print(request.POST)
+        print(student_id)
         return redirect('login')
     return render(request,'quiz.html')
