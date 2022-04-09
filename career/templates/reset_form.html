@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>register</title>
+    <title>password reset</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static '/css/register.css' %}">
 </head>
@@ -16,24 +16,13 @@
     </div>
     </header>
 
-   <div class="container">
+   <div class="container"><h3>Enter your password twice</h3>
     <form method='POST' action=''>
         {% csrf_token %}
-        <h3>REGISTER</h3>
-        {{ form.username.label }}
-        {{form.username}}
-         {{ form.email.label }}
-        {{form.email}}
-         {{ form.password1.label}}
-        {{form.password1}}
-         {{ form.password2.label }}
-        {{form.password2}}
-
-        <button type="submit">Create user</button>
-        {{form.errors}}
-        <div class="footer1">already have an account?<a href="{% url 'login' %}">Login</a></div>
+         {{ form.as_p}}
+       <button type="submit">Reset password</button>
     </form>
-</div>
+   </div>
 
 </body>
 </html>
