@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 :root{
-  --primary: #FC5404;
+  --primary: #5161CE;
   --secondary: #eee;
   --dark: #323232;
   --bg: #202040;
@@ -18,7 +18,11 @@
 }
 
 body{
-  background: var(--bg);
+    background: linear-gradient(rgba(0.5, 0, 0, 0.5), rgba(0.5, 0, 0, 0.5)),url("../images/hack_bg.jpeg");
+	height: 95vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
 }
 
 header{
@@ -185,7 +189,7 @@ footer .card .icon{
   align-items: center;
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  color: #FF4848;
+  color: #5161CE;
 }
 
 footer .card:last-child .icon{

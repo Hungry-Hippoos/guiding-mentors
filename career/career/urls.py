@@ -24,7 +24,7 @@ from school.views import schoolRegisterPage
 urlpatterns = [
     
     path('admin/', admin.site.urls), 
-    path('/',landingPage,name='landing'),
+    path('',landingPage,name='landing'),
     path('register/',registerPage,name="register"),
     path('login/',loginPage,name="login"),
     path('reset_password/',auth_views.PasswordResetView.as_view(template_name="password_reset.html"),name="reset_password"),
