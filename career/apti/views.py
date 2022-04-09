@@ -16,8 +16,9 @@ def student_dashboard(request,responses=None):
         return render(request,'dashboard/index.html')
 
 @csrf_exempt
-def quizPage(request):
+def quizPage(request,student_id=None):
     if request.method == 'POST':
         print(request.POST)
+        print(student_id)
         return redirect('login')
     return render(request,'quiz.html')

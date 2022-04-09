@@ -32,5 +32,6 @@ urlpatterns = [
     path('dashboardstudent/',student_dashboard,name='student_dashboard'),
     # path('dashboardschool/',dashboard_school,name='dashboardschool'),
     path('quiz/',quizPage,name='quiz'),
+    path('quiz/<int:student_id>',quizPage,name='quiz'),
     path('school/<int:school_id>/upload-csv',upload_csv,name='upload-csv'),
 ]
