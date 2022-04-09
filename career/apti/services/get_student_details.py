@@ -1,4 +1,4 @@
-from career.student.models import StudentBuffer
+from student.models import StudentBuffer
 
 def getStudentBuffer(id):
     try:
