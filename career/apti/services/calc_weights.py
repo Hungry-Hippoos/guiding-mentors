@@ -1,12 +1,19 @@
 import pandas as pd
 
+
 def generate_field(responses):
+    '''
+    responses = {"q1": ["math","science", "history"],
+    "
+    :param responses:
+    :return:
+    '''
     q1_args = {"science":["english","maths","science"],
                "commerce": ["english","maths"],
                "arts":["english","other_lang","social studies"]}
-    q2_args = {"science":["english","maths","science"],
-               "commerce": ["english","maths"],
-               "arts":["english","other_lang","social studies"]}
+    q2_args = {"science":["physics","chemistry","biology","maths"],
+               "commerce": ["oc","sp","bk","economics"],
+               "arts":["language","political science","sociology", "history"]}
     scores = {"science":0,
               "commerce":0,
               "arts":0}
@@ -24,18 +31,23 @@ def generate_field(responses):
                 if subject in q1_args.get("arts"):
                     count["arts"] += 1
             for stream,score in scores.items():
-                score[stream] += count[stream]*weights.get("q1")
+                scores[stream] += count[stream]*weights.get("q1")
         if name =="q2":
             count = {"science": 0,
                       "commerce": 0,
                       "arts": 0}
             for subject in answer:
-                if subject in q1_args.get("science"):
+                if subject in q2_args.get("science"):
                     count["science"] += 1
-                if subject in q1_args.get("commerce"):
+                if subject in q2_args.get("commerce"):
                         count["commerce"] += 1
-                if subject in q1_args.get("arts"):
+                if subject in q2_args.get("arts"):
                     count["arts"] += 1
+            for stream,score in scores.items():
+                scores[stream] += count[stream]*weights.get("q2")
+        field = max(zip(scores.values(), scores.keys()))[1]
+
+
 
 def get_weights():
     df = pd.read_csv("career\cs.csv").iloc[:, 1:]
