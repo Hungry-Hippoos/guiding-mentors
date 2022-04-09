@@ -7,7 +7,7 @@ from .models import Question,Response,StudentBuffer
 class CreateUserForm(forms.ModelForm):
     class Meta:
         model=StudentBuffer
-        fields=['name','age','standard','username','password','school_id']
+        fields=['name','age','standard','username','password','school']
 class NewQuestionForm(forms.ModelForm):
     class Meta:
         model = Question

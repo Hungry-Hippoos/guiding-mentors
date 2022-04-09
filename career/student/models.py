@@ -39,7 +39,7 @@ class StudentBuffer(Model):
     standard = CharField(max_length=255,blank=False,null=False)
     username = CharField(max_length=255,blank=False, null=False)
     password = CharField(max_length=255,blank=False,null=False)
-    school_id = PositiveIntegerField(blank=False,null=False)
+    school = CharField(max_length=255,blank=False,null=False)
     
     q1 = CharField(max_length=255,null=True)
     q2 = CharField(max_length=255,null=True)
@@ -67,3 +67,5 @@ class StudentBuffer(Model):
     class Meta:
         verbose_name_plural = 'Student Buffer'
         verbose_name = 'Student Buffer'
+        
+        
