@@ -1,9 +1,10 @@
 bin/
 lib
-lib64/
+lib64
 *.cfg
 include
 share
 db.sqlite3
 __pycache__
 migrations
+venv

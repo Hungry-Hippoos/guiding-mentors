@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'upload-csv' school_id=school_id %}">
+        {% csrf_token %}
+<div class="form-group">
+
+<input type="file" class="form-control-file" id="exampleFormControlFile1" name="csv" style="margin-left:3rem;">
+<button type="submit" class="btn btn-primary mt-3" style="color:black; background-color:#bdffb0; border:none;">Upload Csv</button>
+</div>
+</form>
+</body>
+</html>
