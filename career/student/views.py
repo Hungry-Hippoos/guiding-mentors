@@ -17,11 +17,7 @@ def loginPage(request):
     user=authenticate(request,username=username,password=password)
     if user is not None:
         login(request,user)
-<<<<<<< Updated upstream
         return redirect('student_dashboard')
-=======
-        return redirect('home')
->>>>>>> Stashed changes
     else :
         messages.info(request,'Username or password incorrect')
 

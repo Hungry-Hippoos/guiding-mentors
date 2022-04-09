@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from student.views import loginPage,registerPage,homepage,quizPage,forum,searchForum,newQuestionPage,questionPage,replyPage,landingPage
+from student.views import loginPage,registerPage,homepage,forum,searchForum,newQuestionPage,questionPage,replyPage,landingPage
 from django.contrib.auth import views as auth_views
 from school.views import upload_csv
 from apti.views import quizPage, student_dashboard
@@ -23,7 +23,7 @@ from apti.views import quizPage, student_dashboard
 urlpatterns = [
     
     path('admin/', admin.site.urls), 
-    path('/',landingPage,name='landing'),
+    path('',landingPage,name='landing'),
     path('register/',registerPage,name="register"),
     path('login/',loginPage,name="login"),
     path('reset_password/',auth_views.PasswordResetView.as_view(template_name="password_reset.html"),name="reset_password"),
