@@ -1,22 +1,18 @@
-from django.shortcuts import render
-
+from django.shortcuts import redirect, render
+from apti.models import RecordBuffer
 # Create your views here.
 def upload_csv(request, school_id):
     if request.method == "POST":
         csv = request.FILES['csv']
         print(school_id)
-        lines = csv.read().decode().split('\r\n')
-        print(lines)
-        for i,line in enumerate(lines):
-            try:
-                print(line)
-                if i == 0 or i == len(lines) -1:
-                    continue
-                elements = line.split(',')
-                print(elements)
-                
-            except:
-                pass
+        record = RecordBuffer()
+        record.file=csv
+        record.school_id=school_id
+        try:
+            record.save()
+            return redirect('login')
+        except:
+            raise Exception("Could not save record")
     if request.method == 'GET':
         school_id=school_id
         context={

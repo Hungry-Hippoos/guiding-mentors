@@ -1,10 +1,10 @@
-from django.db.models import CharField, ForeignKey, PositiveIntegerField, DateTimeField, BooleanField, CASCADE, TextField, Model, FileField
+from django.db.models import CharField, ForeignKey, PositiveIntegerField, DateTimeField, BooleanField, CASCADE, TextField, Model, FileField, AutoField
 # Create your models here.
 class RecordBuffer(Model):
-    id = PositiveIntegerField(blank=False, null=False, primary_key=True)
+    id = AutoField(primary_key=True)
     created_on = DateTimeField(auto_now_add=True)
     updated_on = DateTimeField(auto_now=True)
-    file = FileField()
+    file = FileField(upload_to='csv_records')
     school_id = PositiveIntegerField(blank=False, null=False)
     status = PositiveIntegerField(default=1)
 
