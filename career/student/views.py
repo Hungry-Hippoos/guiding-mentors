@@ -17,3 +17,4 @@ def loginPage(request):
            messages.info(request,'Username or password incorrect')
     context={}
     return render(request,'myApp/login.html',context)
+
