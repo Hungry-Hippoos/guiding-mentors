@@ -37,4 +37,3 @@ def registerPage(request):
 def homepage(request):
     
     return render(request,'homepage.html')
-
