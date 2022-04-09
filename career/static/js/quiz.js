@@ -1,3 +1,25 @@
+function post(path, params, method='post') {
+
+  // The rest of this code assumes you are not using a library.
+  // It can be made less verbose if you use one.
+  const form = document.createElement('form');
+  form.method = method;
+  form.action = path;
+  for (const key in params) {
+    if (params.hasOwnProperty(key)) {
+      const hiddenField = document.createElement('input');
+      hiddenField.type = 'hidden';
+      hiddenField.name = key;
+      hiddenField.value = JSON.stringify(params[key]);
+
+      form.appendChild(hiddenField);
+    }
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
 var quiz = {
     // (A) PROPERTIES
     // (A1) QUESTIONS & ANSWERS
@@ -15,7 +37,6 @@ var quiz = {
         "200",
         "250",
       ],
-      a : [1,3] // arrays start with 0, so answer is 70 meters
     },
     {
       q : "Which is the highest number on a standard roulette wheel?",
@@ -25,7 +46,6 @@ var quiz = {
         "32",
         "36"
       ],
-      a : 3
     },
     {
       q : "How much wood could a woodchuck chuck if a woodchuck would chuck wood?",
@@ -35,7 +55,6 @@ var quiz = {
         "700 pounds",
         "750 pounds"
       ],
-      a : 2
     },
     {
       q : "Which is the seventh planet from the sun?",
@@ -45,7 +64,6 @@ var quiz = {
         "Pluto",
         "Mars"
       ],
-      a : 0
     },
     {
       q : "Which is the largest ocean on Earth?",
@@ -55,10 +73,38 @@ var quiz = {
         "Arctic Ocean",
         "Pacific Ocean"
       ],
-      a : 3
     }
     ],
-  
+    ans:{
+      0:{
+        opt:3,
+        ans:[]
+      },
+      1:{
+        opt:3,
+        ans:[]
+      },
+      2:{
+        opt:1,
+        ans:[]
+      },
+      3:{
+        opt:1,
+        ans:[]
+      },
+      4:{
+        opt:3,
+        ans:[]
+      },
+      5:{
+        opt:1,
+        ans:[]
+      },
+      6:{
+        opt:1,
+        ans:[]
+      }
+    },
     // (A2) HTML ELEMENTS
     hWrap: null, // HTML quiz container
     hQn: null, // HTML question wrapper
@@ -112,35 +158,74 @@ var quiz = {
     // (D) OPTION SELECTED
     select: (option) => {
       // (D1) DETACH ALL ONCLICK
-      let all = quiz.hAns.getElementsByTagName("label");
-      for (let label of all) {
-        label.removeEventListener("click", quiz.select);
-      }
+      // let all = quiz.hAns.getElementsByTagName("label");
+      // for (let label of all) {
+      //   label.removeEventListener("click", quiz.select);
+      // }
   
       // (D2) CHECK IF CORRECT
-      let correct = option.dataset.idx == quiz.data[quiz.now].a;
-      if (correct) {
-        quiz.score++;
-        option.classList.add("correct");
-      } else {
-        option.classList.add("wrong");
-      }
-  
+      console.log(option.dataset.idx)
       // (D3) NEXT QUESTION OR END GAME
-      quiz.now++;
+      if((quiz.ans[quiz.now].opt-1)!=0){
+        quiz.ans[quiz.now].opt--;
+        quiz.ans[quiz.now].ans.push(option.dataset.idx);
+      }else{
+        console.log(quiz.ans[quiz.now].ans);
+        quiz.ans[quiz.now].ans.push(option.dataset.idx);
+        quiz.now++;
+      }
       setTimeout(() => {
         if (quiz.now < quiz.data.length) { quiz.draw(); }
         else {
-          quiz.hQn.innerHTML = `You have answered ${quiz.score} of ${quiz.data.length} correctly.`;
-          quiz.hAns.innerHTML = "";
+          for(i=0;i<quiz.ans.length;i++){
+            quiz.ans[i]=quiz.ans[i].ans;
+          }
+          console.log(JSON.stringify(quiz.ans));
+          // axios({
+          //   method: 'post',
+          //   url: '/quiz/',
+          //   data: JSON.stringify(quiz.ans)
+          // });
+          post('/quiz/', quiz.ans)
+
         }
-      }, 1000);
+      }, 100);
     },
   
     // (E) RESTART QUIZ
     reset : () => {
       quiz.now = 0;
       quiz.score = 0;
+      quiz.ans={
+        0:{
+          opt:3,
+          ans:[]
+        },
+        1:{
+          opt:3,
+          ans:[]
+        },
+        2:{
+          opt:1,
+          ans:[]
+        },
+        3:{
+          opt:1,
+          ans:[]
+        },
+        4:{
+          opt:3,
+          ans:[]
+        },
+        5:{
+          opt:1,
+          ans:[]
+        },
+        6:{
+          opt:1,
+          ans:[]
+        }
+      };
       quiz.draw();
     }
   };
