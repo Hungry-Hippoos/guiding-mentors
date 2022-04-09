@@ -13,7 +13,7 @@ def student_dashboard(request,responses=None):
     if responses is not None:
         student.recommended=generate_field(responses)
     else:
-        return render(request,'dashboard/index.html')
+        return render(request,'student-dashboard.html')
 
 @csrf_exempt
 def quizPage(request,student_id=None):
