@@ -1,0 +1,6 @@
+student - schools - prof - not logged in user
+use case
+1. student - analysis record ( results) and give reccomds
+2. schools - see analysis of all the students and can recco the councelling for the students accordingly, provide electives acc
+3. professionals - fourm, to answer questions provided by the students down votes for filtering similar to stack overflow, blogs, 
+4. open access - apptitude tests
