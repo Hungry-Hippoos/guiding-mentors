@@ -33,15 +33,9 @@ import plotly.graph_objects as go
 def graph_student(request):
     df = pd.read_csv('career\School_records.csv')
     print(request.user.id)
-    df.iloc[:,2:-1].mean()
-    go_fig = go.Figure()
-    obj = go.Scatter(
-        x=list(df.iloc[:,2:-1].columns),
-        y=list(df.iloc[:, 2:-1].mean().values),
-        mode='lines',
-    )
-    go_fig.add_trace(obj)
-    graph1 = plotly.offline.plot(go_fig, auto_open=False, output_type="div")
+    student_data = df[df.Id == request.user.id].iloc[:,2:-1]
+    fig = go.Figure([go.Bar(x=list(student_data.columns), y=list(student_data.iloc[0,:].values))])
+    graph2 = plotly.offline.plot(fig, auto_open=False, output_type="div")
     #   graph4 = plotly.offline.plot(fig, auto_open=False, output_type="div")
     context = {"graph": [graph1, graph2, graph3],
                'name': request.user.school,
