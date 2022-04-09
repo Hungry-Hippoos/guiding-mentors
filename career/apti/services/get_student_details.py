@@ -5,4 +5,5 @@ def getStudentBuffer(id):
         student = StudentBuffer.objects.get(id=id)
         return student
     except:
-        raise Exception('student details not found')
+        return None
+        # raise Exception('student details not found')
