@@ -3,6 +3,12 @@ from apti.services.calc_weights import get_weights, generate_field, normalize_ra
 from student.models import StudentBuffer
 from apti.services.get_student_details import getStudentBuffer
 from django.views.decorators.csrf import csrf_exempt
+import pandas as pd
+import plotly
+import plotly.express as px
+import os
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 
 # Create your views here.
 def student_dashboard(request,responses=None):
@@ -23,12 +29,6 @@ def quizPage(request,student_id=None):
         return redirect('login')
     return render(request,'quiz.html')
 
-import pandas as pd
-import plotly
-import plotly.express as px
-import os
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
 
 def graph_student(request):
     df = pd.read_csv('career\School_records.csv')
