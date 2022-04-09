@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}{{question.id}} | {{question.title}}{% endblock title %}
+
+{% block style %}
+{% load static %}
+    <link href= '{% static 'css/question.css' %}?{% now "U" %}' rel="stylesheet">
+{% endblock style %}
+
+
+
+{% block body %}
+<main class="container my-5">
+    
+    <div class="card">
+        <h2 class="card-header">{{question.title}}</h2>
+        <div class="card-body">            
+            <p class='mt-3'>{{question.body}}</p>
+            <span class='fst-italic'>Author : {{question.author.username}}</span>
+        </div>
+    </div>
+        
+    
+  
+
+    <div class="responses mt-3 ">
+        <p class='fw-bolder'>Responses :<p/>
+        {% if not question.responses.all %}
+            <p class="text-black-50">No responses yet</p>
+        {% else %}
+            {% for response in question.get_responses%}
+                {% include 'response.html' with response=response %}               
+            {% endfor %}
+        {% endif %}     
+    </div>
+
+    {% if user.is_authenticated %}
+        <form method='POST' action=''>
+            {% csrf_token %}
+            <div class="my-5">
+                <label for="{{response_form.body.id_for_label}}" class="form-label fw-bold">Your Answer:</label>
+                <div class='mb-3'>
+                     {{response_form.body}}
+                </div>               
+                <span class="error">{{form.title.errors}}</span>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    {% endif %}
+
+</main>
+
+
+{% endblock body %}
