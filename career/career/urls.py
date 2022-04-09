@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from student.views import loginPage,registerPage
+from student.views import loginPage,registerPage,homepage,quizPage
 from django.contrib.auth import views as auth_views
 from school.views import upload_csv
 
@@ -27,5 +27,11 @@ urlpatterns = [
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(template_name="password_reset_sent.html"),name="password_reset_done"),
     path('reset/<uidb64>/<token>',auth_views.PasswordResetConfirmView.as_view(template_name="reset_form.html"), name="password_reset_confirm"),
     path('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(template_name="password_reset_done.html"),name="password_reset_complete"),
+<<<<<<< HEAD
+    path('home/',homepage,name='home'),
+    path('quiz/',quizPage,name='quiz'),
+
+=======
     path('school/<int:school_id>/upload-csv',upload_csv,name='upload-csv'),
+>>>>>>> 41641b7d9920c92a78ba5559387cbc832dec629b
 ]

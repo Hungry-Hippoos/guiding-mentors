@@ -37,3 +37,6 @@ def registerPage(request):
 def homepage(request):
     
     return render(request,'homepage.html')
+def quizPage(request):
+    
+    return render(request,'quiz.html')
