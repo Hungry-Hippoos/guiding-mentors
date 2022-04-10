@@ -18,7 +18,7 @@ from django.urls import path
 from student.views import loginPage,registerPage,homepage,forum,searchForum,newQuestionPage,questionPage,replyPage,landingPage
 from django.contrib.auth import views as auth_views
 from school.views import upload_csv
-from apti.views import quizPage, student_dashboard
+from apti.views import quizPage, student_dashboard,school_dashboard
 from school.views import schoolRegisterPage
 
 urlpatterns = [
@@ -33,7 +33,7 @@ urlpatterns = [
     path('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(template_name="password_reset_done.html"),name="password_reset_complete"),
     path('home/',homepage,name='home'),
     path('student/dashboard/',student_dashboard,name='student_dashboard'),
-    # path('dashboardschool/',dashboard_school,name='dashboardschool'),
+    path('school/dashboard/',school_dashboard,name='school_dashboard'),
     path('quiz/',quizPage,name='quiz'),
     path('quiz/<int:student_id>',quizPage,name='quiz'),
     path('school/<int:school_id>/upload-csv',upload_csv,name='upload-csv'),
