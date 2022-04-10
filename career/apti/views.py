@@ -6,6 +6,7 @@ from apti.services.get_student_details import getStudentBuffer
 from django.views.decorators.csrf import csrf_exempt
 from .services.skills import skills
 import pandas as pd
+import json
 import plotly
 import plotly.express as px
 import os
@@ -68,23 +69,33 @@ def school_dashboard(request,responses=None,school_id=None):
 def quizPage(request,student_id=None):
     if request.method == 'POST':
         print(request.POST)
-        data = request.POST
+        data = {
+            'q1':json.loads(request.POST['0'])['ans'],
+            'q2': json.loads(request.POST['1'])['ans'],
+            'q3': json.loads(request.POST['2'])['ans'],
+            'q4': json.loagids(request.POST['3'])['ans'],
+            'q5': json.loads(request.POST['4'])['ans'],
+            'q6': json.loads(request.POST['5'])['ans'],
+            'q7': json.loads(request.POST['6'])['ans']
+        }
+        print(data)
         print(student_id)
         if student_id is None:
             return redirect('login')
         student = getStudentBuffer(student_id)
-        student.q1=",".join(data['0'])
-        student.q2=",".join(data['1'])
-        student.q3=",".join(data['2'])
-        student.q4=",".join(data['3'])
-        student.q5=",".join(data['4'])
-        student.q6=",".join(data['5'])
-        student.q7=",".join(data['6'])
+        student.q1=",".join(data['q1'])
+        student.q2=",".join(data['q2'])
+        student.q3=",".join(data['q3'])
+        student.q4=",".join(data['q4'])
+        student.q5=",".join(data['q5'])
+        student.q6=",".join(data['q6'])
+        student.q7=",".join(data['q7'])
         ski=[]
         for i in data['4']:
             ski+=skills[i]
         student.skills=",".join(ski)
         student.recommended = generate_field(data)
+        print("Recommended: ", student.recommended)
         try:
             student.save()
             return redirect('student_dashboard')

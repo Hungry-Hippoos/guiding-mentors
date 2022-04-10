@@ -11,24 +11,47 @@ def generate_field(responses):
     q1_args = {"science":["english","maths","science"],
                "commerce": ["english","maths"],
                "arts":["english","other_lang","social studies"]}
+    q1_mapping = {"0":"Math",
+        "1":"Science",
+        "2":"English",
+        "3":"Computer science",
+        "4":"Accounts",
+        "5":"Arts",
+        "6":"Other languages",}
     q2_args = {"science":["physics","chemistry","biology","maths"],
                "commerce": ["oc","sp","bk","economics"],
                "arts":["language","political science","sociology", "history"]}
+    q2_mapping ={"0":"Math",
+        "1":"Physics",
+        "2":"Biology",
+        "3":"Chemistry",
+        "4":"Commerce",
+        "5":"Secretarial Practice",
+        "6":"Economics",
+        "7":"Book Keeping",
+        "8":"Organization of Commerce",
+        "9":"Computer science",
+        "10":"Languages",
+        "11":"political Science",
+        "12":"Sociology",
+        "13":"History",
+        "14":"Geography"}
     scores = {"science":0,
               "commerce":0,
               "arts":0}
     weights = get_weights()
+    print("Weights",weights)
     for name, answer in responses.items():
         if name =="q1":
             count = {"science": 0,
                       "commerce": 0,
                       "arts": 0}
             for subject in answer:
-                if subject in q1_args.get("science"):
+                if q1_mapping.get(subject) in q1_args.get("science"):
                     count["science"] += 1
-                if subject in q1_args.get("commerce"):
+                if q1_mapping.get(subject) in q1_args.get("commerce"):
                         count["commerce"] += 1
-                if subject in q1_args.get("arts"):
+                if q1_mapping.get(subject) in q1_args.get("arts"):
                     count["arts"] += 1
             for stream,score in scores.items():
                 scores[stream] += count[stream]*weights.get("q1")
@@ -37,24 +60,23 @@ def generate_field(responses):
                       "commerce": 0,
                       "arts": 0}
             for subject in answer:
-                if subject in q2_args.get("science"):
+                if q2_mapping.get(subject) in q2_args.get("science"):
                     count["science"] += 1
-                if subject in q2_args.get("commerce"):
+                if q2_mapping.get(subject) in q2_args.get("commerce"):
                         count["commerce"] += 1
-                if subject in q2_args.get("arts"):
+                if q2_mapping.get(subject) in q2_args.get("arts"):
                     count["arts"] += 1
             for stream,score in scores.items():
                 scores[stream] += count[stream]*weights.get("q2")
         field = max(zip(scores.values(), scores.keys()))[1]
+        return field
 
 
 
 def get_weights():
     df = pd.read_csv("career\cs.csv").iloc[:, 1:]
     normalized = normalize_ratings({"weights":df})
-    q1_args = {"science":["english","maths","science"],
-               "commerce": ["english","maths"],
-               "arts":["english","other_lang","social studies"]}
+    return normalized
 
 
 
