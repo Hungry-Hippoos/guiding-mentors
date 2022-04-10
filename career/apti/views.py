@@ -52,6 +52,10 @@ def school_dashboard(request,responses=None,school_id=None):
     graph1 = plotly.offline.plot(go_fig, auto_open=False, output_type="div")
     school = SchoolBuffer.objects.get(id = school_id)
     #   graph4 = plotly.offline.plot(fig, auto_open=False, output_type="div")
+    students = StudentBuffer.objects.all()
+    fields = []
+    for student in students:
+        fields.append(student.recommended)
     context = {"graph": graph1,
                'name': school.name,
                 'roll': school.id,
