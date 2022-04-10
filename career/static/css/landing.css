@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
+
 :root{
   --primary: #5161CE;
   --secondary: #eee;
   --dark: #323232;
   --bg: #202040;
 }
-
 *{
   margin: 0;
   padding: 0;
