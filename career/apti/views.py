@@ -51,12 +51,8 @@ def school_dashboard(request,responses=None):
     go_fig.add_trace(obj)
     graph1 = plotly.offline.plot(go_fig, auto_open=False, output_type="div")
     school = SchoolBuffer.objects.get(id = request.user.id)
-    df = pd.read_csv('School_records.csv')
-    student_data = df[df.Id == request.user.id].iloc[:,2:-1]
-    fig = go.Figure([go.Bar(x=list(student_data.columns), y=list(student_data.iloc[0,:].values))])
-    graph2 = plotly.offline.plot(fig, auto_open=False, output_type="div")
     #   graph4 = plotly.offline.plot(fig, auto_open=False, output_type="div")
-    context = {"graph": graph2,
+    context = {"graph": graph1,
                'school': student.school,
                'name': student.name,
                 'roll': student.id,
