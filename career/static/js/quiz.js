@@ -221,11 +221,8 @@ var quiz = {
           //   method: 'post',
           //   url: '/quiz/',
           //   data: JSON.stringify(quiz.ans)
-          // });
-          var user_id = window.location.href
-          console.log(user_id);
-          user_id = user_id[user_id.length-1];
-          post('/quiz/'+user_id, quiz.ans)
+          // });;
+          post('/quiz/1/', quiz.ans)
 
         }
       }, 100);

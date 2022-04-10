@@ -38,8 +38,8 @@ def loginPage(request):
         print(test)
         return redirect('student_dashboard')
     else :
-        messages.info(request,'Username or password incorrect')
-
+        # messages.info(request,'Username or password incorrect')
+        ...
 
     context={}
     return render(request,'login.html',context)
