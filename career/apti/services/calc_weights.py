@@ -41,6 +41,7 @@ def generate_field(responses):
               "arts":0}
     weights = get_weights()
     print("Weights",weights)
+
     for name, answer in responses.items():
         if name =="q1":
             count = {"science": 0,
@@ -74,17 +75,22 @@ def generate_field(responses):
 
 
 def get_weights():
-    df = pd.read_csv("career\cs.csv").iloc[:, 1:]
+    df = pd.read_csv("cs.csv").iloc[:, 1:]
     normalized = normalize_ratings({"weights":df})
     return normalized
 
 
 
 def normalize_ratings(rating):
+    means = 0
+    weights = {}
     for name,ratings in rating.items():
         means = ratings.mean()
         sd = ratings.std()
         for i in range(len(ratings.columns)):
-            ratings.iloc[:,i] = ratings.iloc[:,i].apply(lambda x: (x-means.iloc[i])/sd.iloc[i])
-    print(rating)
-    return rating
+            ratings.iloc[:,i] = ratings.iloc[:,i].apply(lambda x: (x-means.iloc[i])/sd.iloc[i]).mean()
+    print(means.values)
+    for i in range(7):
+        weights["q"+str(i+1)] = means.values[i]
+    print("W",weights)
+    return weights

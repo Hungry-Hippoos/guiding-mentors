@@ -73,7 +73,7 @@ def quizPage(request,student_id=None):
             'q1':json.loads(request.POST['0'])['ans'],
             'q2': json.loads(request.POST['1'])['ans'],
             'q3': json.loads(request.POST['2'])['ans'],
-            'q4': json.loagids(request.POST['3'])['ans'],
+            'q4': json.loads(request.POST['3'])['ans'],
             'q5': json.loads(request.POST['4'])['ans'],
             'q6': json.loads(request.POST['5'])['ans'],
             'q7': json.loads(request.POST['6'])['ans']
@@ -91,16 +91,19 @@ def quizPage(request,student_id=None):
         student.q6=",".join(data['q6'])
         student.q7=",".join(data['q7'])
         ski=[]
-        for i in data['4']:
-            ski+=skills[i]
+        for i in data['q5']:
+            print(list(skills.keys())[int(i)])
+            ski+=skills[list(skills.keys())[int(i)]]
         student.skills=",".join(ski)
         student.recommended = generate_field(data)
         print("Recommended: ", student.recommended)
         try:
             student.save()
-            return redirect('student_dashboard')
+            return redirect('student_dashboard',student_id=student.id)
         except:
+            print('hello world')
             return redirect('login')
+    print(student_id)
     return render(request,'quiz.html')
 
 
