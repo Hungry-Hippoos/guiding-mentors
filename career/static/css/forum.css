@@ -1,12 +1,28 @@
-*{
-    font-family: Poppins;
-  }
+
   :root{
     --primary: #5161CE;
     --secondary: #eee;
     --dark: #323232;
     --bg: #202040;
   }
+  *{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    line-height: 1.5;
+    transition: all .3s ease-in-out;
+    font-family: "Josefin Sans", Arial;
+  }
+  
+  body{
+      background:url("../images/hack_bg.png");
+    height: 95vh;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+  }
+  
   header{
     padding: 2rem 0;
     display: flex;
@@ -53,6 +69,7 @@
     justify-content: space-between;
     align-items: center;
   }
+  
   .btn{
     margin: 0 1rem;
     background: transparent;
@@ -78,13 +95,12 @@
     background: var(--secondary);
     color: var(--primary);
   }
-body{
-    
-    height:100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
+  
+  header .btns .btn{
+    margin: 0 10px;
+  }
+
+
   .navbar-custom{
      background: linear-gradient(to right,#1e054d,#5161CE);
      

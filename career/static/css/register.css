@@ -94,7 +94,7 @@ body {
     right: 45px;
     top: 50px;
     width: 500px;
-    height : 600px;
+    height : 680px;
     background: #ffffff;
     margin: 4.5% auto;
     border-radius: 5px;
@@ -142,6 +142,6 @@ form button{
     opacity: 1;
     color: black;
 }
-.footer1{padding-left:5px;
+.footer{padding-left:5px;
 padding-right:5px;
  text-align: center;}

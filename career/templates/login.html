@@ -25,11 +25,9 @@
         <input type="password" name="password" placeholder="password" required>
 
         <button type="submit">Login</button>
-        {% for message in messages %}
-        <p>{{message}}</p>
-        {% endfor %}
-        <div class="footer1">new user?<a href="{% url 'register' %}">Register</a></div>
-            <div>Forgot Password?<a href="{% url 'reset_password' %}">Reset Password</a></div>
+        
+        <div class="footer1" style="text-align:center">new user?<a href="{% url 'register' %}">Register</a></div>
+            <div style="text-align:center">Forgot Password?<a href="{% url 'reset_password' %}">Reset Password</a></div>
     </form>
    </div>
 
