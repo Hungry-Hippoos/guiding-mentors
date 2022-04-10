@@ -26,54 +26,90 @@ var quiz = {
     // Q = QUESTION, O = OPTIONS, A = CORRECT ANSWER
     data: [
     {
-      q : "What is the standard distance between the target and archer in Olympics?",
+      q : "Subjects that you liked to study ",
       o : [
-        "50 meters",
-        "70 meters",
-        "100 meters",
-        "120 meters",
-        "100",
-        "150",
-        "200",
-        "250",
+        "Math",
+        "Science",
+        "English",
+        "Computer science",
+        "Accounts",
+        "Arts",
+        "Other languages",
+
       ],
     },
     {
-      q : "Which is the highest number on a standard roulette wheel?",
+      q : "Subjects you wish to pursue in the future?",
       o : [
-        "22",
-        "24",
-        "32",
-        "36"
+        "Math",
+        "Physics",
+        "Biology",
+        "Chemistry",
+        "Commerce",
+        "Secretarial Practice",
+        "Economics",
+        "Book Keeping",
+        "Organization of Commerce",
+        "Computer science",
+        "Languages",
+        "political Science",
+        "Sociology",
+        "History",
+        "Geography"
       ],
     },
     {
-      q : "How much wood could a woodchuck chuck if a woodchuck would chuck wood?",
+      q : "How do you like to work? ",
       o : [
-        "400 pounds",
-        "550 pounds",
-        "700 pounds",
-        "750 pounds"
+        "Working in group",
+        "Working alone",
+        "No Preference"
+
       ],
     },
     {
-      q : "Which is the seventh planet from the sun?",
+      q : "Your dream profession ?",
       o : [
-        "Uranus",
-        "Earth",
-        "Pluto",
-        "Mars"
+        "Working in group",
+        "Working alone",
+        "No Preference"
       ],
     },
     {
-      q : "Which is the largest ocean on Earth?",
-      o : [
-        "Atlantic Ocean",
-        "Indian Ocean",
-        "Arctic Ocean",
-        "Pacific Ocean"
+      q : "Which of the following professions seems interesting to you?",
+        o : [
+    "software development",
+    "supply chain manager",
+    "scientist",
+    "pilot",
+    "chef",
+    "author",
+    "Journalist",
+    "Astronaut",
+    "Risk analyst",
+    "Psychiatrist",
+    "CA",
+    "Doctor",
+    "Sales Executive",
+    "teacher"
+
       ],
-    }
+    },
+    {
+      q : "Your creativity and communication skills",
+        o : [
+        "1",
+        "2",
+        "3"
+      ],
+    },
+    {
+    q : "Solved an existing problem for anyone on any scale",
+        o : [
+        "Yes",
+        "No",
+      ],
+     }
     ],
     ans:{
       0:{
@@ -186,7 +222,10 @@ var quiz = {
           //   url: '/quiz/',
           //   data: JSON.stringify(quiz.ans)
           // });
-          post('/quiz/', quiz.ans)
+          var user_id = window.location.href
+          console.log(user_id);
+          user_id = user_id[user_id.length-1];
+          post('/quiz/'+user_id, quiz.ans)
 
         }
       }, 100);
