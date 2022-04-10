@@ -57,12 +57,15 @@ def school_dashboard(request,responses=None,school_id=None):
     fields = []
     for student in students:
         fields.append(student.recommended)
+    g2 = go.Figure(go.Pie(labels=["Science","Commerce","Arts"],values=[43,27,30]))
+    graph2 = plotly.offline.plot(g2, auto_open=False, output_type="div")
     context = {"graph": graph1,
                'name': school.name,
                 'roll': school.id,
-                'board': school.board
+                'board': school.board,
+               'graph2': graph2
                }
-    return render(request, 'student-dashboard.html', context)
+    return render(request, 'school-dashboard.html', context)
 
 
 @csrf_exempt
