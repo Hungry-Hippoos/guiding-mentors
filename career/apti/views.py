@@ -13,10 +13,10 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
 # Create your views here.
-def student_dashboard(request,responses=None):
-    student = getStudentBuffer(request.user.id)
+def student_dashboard(request,responses=None,student_id=None):
+    student = getStudentBuffer(student_id)
     df = pd.read_csv('School_records.csv')
-    student_data = df[df.Id == request.user.id].iloc[:,2:-1]
+    student_data = df[df.Id == student_id].iloc[:,2:-1]
     fig = go.Figure([go.Bar(x=list(student_data.columns), y=list(student_data.iloc[0,:].values))])
     graph2 = plotly.offline.plot(fig, auto_open=False, output_type="div")
     #   graph4 = plotly.offline.plot(fig, auto_open=False, output_type="div")
@@ -39,8 +39,8 @@ def student_dashboard(request,responses=None):
     # else:
     #     return render(request,'student-dashboard.html')
 
-def school_dashboard(request,responses=None):
-    df = pd.read_csv('career\School_records.csv')
+def school_dashboard(request,responses=None,school_id=None):
+    df = pd.read_csv('School_records.csv')
     df.iloc[:,2:-1].mean()
     go_fig = go.Figure()
     obj = go.Scatter(
@@ -50,17 +50,12 @@ def school_dashboard(request,responses=None):
     )
     go_fig.add_trace(obj)
     graph1 = plotly.offline.plot(go_fig, auto_open=False, output_type="div")
-    school = SchoolBuffer.objects.get(id = request.user.id)
+    school = SchoolBuffer.objects.get(id = school_id)
     #   graph4 = plotly.offline.plot(fig, auto_open=False, output_type="div")
     context = {"graph": graph1,
-               'school': student.school,
-               'name': student.name,
-                'roll': student.id,
-                'age': student.age,
-               'standard': student.standard,
-               'field': student.recommended,
-               'interest': student.q4,
-               'skills': student.skills
+               'name': school.name,
+                'roll': school.id,
+                'board': school.board
                }
     return render(request, 'student-dashboard.html', context)
 

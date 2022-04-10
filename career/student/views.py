@@ -6,6 +6,7 @@ from .forms import CreateUserForm,NewQuestionForm,NewReplyForm,NewResponseForm
 from .models import Question, Response
 from django.contrib.auth.decorators import login_required
 from school.models import SchoolBuffer
+from student.models import StudentBuffer
 
 def landingPage(request):
     
@@ -17,16 +18,24 @@ def loginPage(request):
      
     username=request.POST.get('username')
     password=request.POST.get('password')
-    user=authenticate(request,username=username,password=password)
+    user=None
+    try:
+        user=StudentBuffer.objects.get(username=username,password=password)
+    except:
+        ...
+    if user is not None:
+        return redirect('student_dashboard',student_id=user.id)
+    print(username, password)
     school=None
     try:
         school = SchoolBuffer.objects.get(username=username,password=password)
         if school is not None:
-            return redirect('student_dashboard')            
+            return redirect('school_dashboard',school_id=school.id)            
     except:
         ...
     if user is not None:
-        login(request,user)
+        test=login(request,user)
+        print(test)
         return redirect('student_dashboard')
     else :
         messages.info(request,'Username or password incorrect')
