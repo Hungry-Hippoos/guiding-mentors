@@ -1,15 +1,105 @@
-.reply-button {
-    background-color: transparent;
-    
-    border: none;
-    padding: 0;
-    text-transform: lowercase;
-    color:#5161CE;
-    cursor: pointer;
-    font-size: 0.9em;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+:root{
+  --primary: #5161CE;
+  --secondary: #eee;
+  --dark: #323232;
+  --bg: #202040;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  line-height: 1.5;
+  transition: all .3s ease-in-out;
+  font-family: "Josefin Sans", Arial;
+}
+
+body{
+    background: linear-gradient(rgba(0.5, 0, 0, 0.5), rgba(0.5, 0, 0, 0.5)),url("../images/hack_bg.png");
+	height: 95vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+}
+
+header{
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--secondary);
+}
+
+header .logo{
+  font-size: 23px;
+}
+
+header .logo span{
+  color: var(--primary);
+}
+
+.left{
+  display: flex;
+  align-items: center;
+  min-width: 40%;
+  justify-content: space-between;
+}
+
+header ul{
+  display: flex;
+  jutsify-content: space-between;
+  align-items: center; 
+}
+
+header ul li{
+  list-style-type: none;
+  margin: 0 1rem;
+  color: #888;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+header ul li.active, header ul li:hover{
+  color: var(--secondary);
+}
+
+header .btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn{
+  margin: 0 1rem;
+  background: transparent;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-primary{
+  background: var(--primary);
+}
+
+.btn-primary:hover{
+  background: var(--secondary);
+  color: var(--primary);
+}
+
+.btn-secondary:hover{
+  background: var(--secondary);
+  color: var(--primary);
+}
+
+header .btns .btn{
+  margin: 0 10px;
+}
+
   
   .reply-form-container {
     display: none;

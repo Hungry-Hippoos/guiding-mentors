@@ -3,9 +3,27 @@
 
 {% block style %}
 {% load static %}
- <link href= "{% static 'css/newQuestion.css'  %}" rel="stylesheet">
+ <link href= "{% static 'css/forum.css'  %}" rel="stylesheet">
 {% endblock style %}
-
+<header>
+    <div style="display:flex !important;justify-content:space-between !important">
+        <div class="left">
+            <h1 class="logo">Startup<span>.</span></h1>
+         
+        </div>
+        <div class="btns" style="margin-left:70%; margin-top:20px; display:flex;flex-direction:row;">
+          <form action ="{% url 'quiz' %}" method="'post">
+            {% csrf_token %}
+            <button class="btn btn-primary">Give Test</button>
+        </form>
+        <form style="margin-left:10px; margin-right:10px" action ="{% url 'forum' %}" method="'post">
+            {% csrf_token %}
+            <button class="btn btn-primary">Forum</button>
+        </form>
+          
+          
+        </div>
+  </header>
 {% block body %}
 <body>   
     <main class="container">

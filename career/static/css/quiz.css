@@ -54,7 +54,7 @@
     display: flex;
     align-items: center; justify-content: center;
     min-height: 100vh;
-    background-image: url("../images/hack_bg.jpeg");
+    background-image: url("../images/hack_bg.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

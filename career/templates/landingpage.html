@@ -4,13 +4,21 @@
         <link rel="stylesheet" type="text/css" href="{% static '/css/landing.css' %}">
     </head>
     <body>
-        <header>
-            <div class="left">
-                
-              
-            </div>
-            
-          </header>
+<header>
+        <div class="left">
+            <h1 class="logo">Startup<span>.</span></h1>
+         
+        </div>
+        <div class="btns">
+          <form action ="{% url 'quiz' %}" method="'post">
+            {% csrf_token %}
+            <button class="btn btn-primary">Give Test</button>
+        </form>
+          
+          
+        </div>
+      </header>
+      
           <section id="hero">
             <div class="left">
               
@@ -20,6 +28,11 @@
                   {% csrf_token %}
                   <button class="btn btn-primary">Student SignUp</button>
               </form>
+              <form action ="{% url 'school-register' %}" method="'post">
+                {% csrf_token %}
+                <button class="btn btn-primary">Student SignUp</button>
+            </form>
+
               
               <button class="btn btn-secondary"><i class="fas fa-play"></i> School SignUp</button>
             </div>

@@ -7,7 +7,20 @@
 {% endblock style %}
 
 
-
+<header>
+    <div class="left">
+        <h1 class="logo">Startup<span>.</span></h1>
+     
+    </div>
+    <div class="btns">
+      <form action ="{% url 'quiz' %}" method="'post">
+        {% csrf_token %}
+        <button class="btn btn-primary">Give Test</button>
+    </form>
+      
+      
+    </div>
+</header>
 {% block body %}
 <main class="container my-5">
     

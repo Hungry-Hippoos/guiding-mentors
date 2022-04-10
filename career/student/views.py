@@ -43,19 +43,17 @@ def loginPage(request):
 
     context={}
     return render(request,'login.html',context)
-@login_required(login_url='/login')
+
 def forum(request):
-    if request.user.is_anonymous:
-        return redirect('/login')
+    
 
     questions=Question.objects.all().order_by('-created_at')
     context={'questions':questions}
     return render(request,'forum.html',context)
 
-@login_required(login_url='/login')
+
 def searchForum(request):
-    if request.user.is_anonymous:
-        return redirect('/login')
+    
 
     if request.method=='POST':
         questionInitials=request.POST.get('questionInitials')
@@ -66,7 +64,7 @@ def searchForum(request):
     return render(request,'forum.html',context)
 
 
-@login_required(login_url='/login')
+
 def newQuestionPage(request):
     form = NewQuestionForm()
 
@@ -96,7 +94,7 @@ def questionPage(request,id):
             response_form=NewResponseForm(request.POST)
             if response_form.is_valid():
                 response=response_form.save(commit=False)
-                response.user=request.user
+                
                 response.question = Question(id=id)
                 response.save()
                 return redirect('/question/'+str(id)+'#'+str(response.id))
@@ -109,7 +107,7 @@ def questionPage(request,id):
     return render(request,'question.html',context)
 
 
-@login_required(login_url='login')
+
 def replyPage(request):
     if request.method == 'POST':
         try:

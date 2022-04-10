@@ -25,6 +25,25 @@
 
 </head>
 {% block content%}
+<header>
+    <div style="display:flex !important;justify-content:space-between !important">
+        <div class="left">
+            <h1 class="logo">Startup<span>.</span></h1>
+         
+        </div>
+        <div class="btns" style="margin-left:70%; margin-top:20px; display:flex;flex-direction:row;">
+          <form action ="{% url 'quiz' %}" method="'post">
+            {% csrf_token %}
+            <button class="btn btn-primary">Give Test</button>
+        </form>
+        <form style="margin-left:10px; margin-right:10px" action ="{% url 'forum' %}" method="'post">
+            {% csrf_token %}
+            <button class="btn btn-primary">Forum</button>
+        </form>
+          
+          
+        </div>
+</header>
 <body id="page-top">
 
     <!-- Page Wrapper -->

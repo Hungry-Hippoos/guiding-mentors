@@ -18,7 +18,7 @@
 }
 
 body{
-    background: linear-gradient(rgba(0.5, 0, 0, 0.5), rgba(0.5, 0, 0, 0.5)),url("../images/hack_bg.jpeg");
+    background: linear-gradient(rgba(0.5, 0, 0, 0.5), rgba(0.5, 0, 0, 0.5)),url("../images/hack_bg.png");
 	height: 95vh;
 	-webkit-background-size: cover;
 	background-size: cover;
