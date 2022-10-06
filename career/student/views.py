@@ -13,6 +13,7 @@ def landingPage(request):
     return render(request,'landingpage.html')
 
 # Create your views here.
+# function to create a login page
 def loginPage(request):
     
      
@@ -44,6 +45,7 @@ def loginPage(request):
     context={}
     return render(request,'login.html',context)
 
+#function to display all questions
 def forum(request):
     
 
@@ -51,7 +53,7 @@ def forum(request):
     context={'questions':questions}
     return render(request,'forum.html',context)
 
-
+#function to search question in the forum
 def searchForum(request):
     
 
@@ -64,7 +66,7 @@ def searchForum(request):
     return render(request,'forum.html',context)
 
 
-
+#function to add new question to the forum
 def newQuestionPage(request):
     form = NewQuestionForm()
 
@@ -84,7 +86,7 @@ def newQuestionPage(request):
     context={'form':form}
     return render(request,'newQuestion.html',context)
 
-
+#fucntion to view the question and its replies
 def questionPage(request,id):
     response_form=NewResponseForm()
     reply_form=NewReplyForm()
@@ -107,7 +109,7 @@ def questionPage(request,id):
     return render(request,'question.html',context)
 
 
-
+# function to add response to a question
 def replyPage(request):
     if request.method == 'POST':
         try:
@@ -127,6 +129,7 @@ def replyPage(request):
 
     return redirect('forum')
 
+#function to register yourself
 def registerPage(request):
         form=CreateUserForm
         if request.method=='POST':
@@ -140,6 +143,7 @@ def registerPage(request):
             "form":form,
         }
         return render(request,'register.html',context)
+#function to display homepage
 def homepage(request):
     
     return render(request,'homepage.html')
